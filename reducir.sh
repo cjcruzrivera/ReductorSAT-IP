@@ -1,4 +1,4 @@
-# TODO: apt-get install c++
+# apt-get install g++
 
 g++ -std=c++11 -o Reductor/main Reductor/main.cpp
 
@@ -6,5 +6,7 @@ FILES=InstanciasSAT/*
 
 for f in $FILES
 do
-   echo $f
+    filename=$(basename -- "$f")
+    filewithoutExt="${filename%.*}"
+    ./Reductor/main $filewithoutExt 
 done 
