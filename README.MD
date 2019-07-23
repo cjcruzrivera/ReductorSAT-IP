@@ -1,4 +1,4 @@
-# ReductorSAT-IP
+# Reductor SAT-IP
 
 ## Programa que recibe como entrada una instancia SAT en formato DIMACS y genera un programa equivalente de programación entera (IP) para MiniZinc.   
 
