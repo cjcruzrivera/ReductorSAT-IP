@@ -1,19 +1,17 @@
 #include <stdio.h>
 #include <iostream> 
-#include <string>
+#include <string.h>
 
 using namespace std;
 
 int main(int argc, char *argv[]){
-    printf( "%s \n", argv[1]);
 
-    string path = argv[1];
-    freopen(path, "r", stdin);
+    freopen(argv[1], "r", stdin);
+    freopen(argv[2], "w", stdout);
 
-    // char line;
-    // while(getline(cin, line)){
-        // printf(line);
-        // printf("\n");
-    // }
+    string line;
+    while(getline(cin, line)){
+        cout << line;
+    }
     return 0;
 }
