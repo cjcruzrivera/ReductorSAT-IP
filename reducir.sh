@@ -8,5 +8,5 @@ for f in $FILES
 do
     filename=$(basename -- "$f")
     filewithoutExt="${filename%.*}"
-    ./Reductor/main ../InstanciasSAT/$filename ../InstanciasMiniZinc/$filewithoutExt.mzn 
+    ./Reductor/main InstanciasSAT/$filename InstanciasMiniZinc/$filewithoutExt.mzn 
 done 
