@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
             aux >> n;
             aux >> clausulas;
 
-            cout << "int: n = " << n << endl;
-            cout << "int: cl = " << clausulas << endl
+            cout << "int: n = " << n << ";" << endl;
+            cout << "int: cl = " << clausulas << ";" <<  endl
                  << endl;
             cout << "array[1..n] of var bool: v;" << endl;
             cout << "array[1..cl] of var bool: c;" << endl
