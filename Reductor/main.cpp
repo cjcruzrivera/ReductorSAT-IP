@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
     int n;
     int clausulas;
     int i;
-    int j = 1;
 
     while (getline(cin, line))
     {
@@ -34,47 +33,47 @@ int main(int argc, char *argv[])
             aux >> n;
             aux >> clausulas;
 
-            cout << "int: n = " << n << endl;
-            cout << "int: cl = " << clausulas << endl
-                 << endl;
-            cout << "array[1..n] of var bool: v;" << endl;
-            cout << "array[1..cl] of var bool: c;" << endl
-                 << endl;
+            for (int j = 1; j <= n; j++)
+            {
+                cout << "var 0..1: X" << j << "; var 0..1: n_X" << j << ";" << endl;
+                cout << "constraint X" << j << " + n_X" << j << " = 1;" << endl
+                     << endl;
+            }
         }
         else
         {
             stringstream aux(line);
-
-            if (!(aux >> i) || i == 0)
+            string lineaImp;
+            lineaImp = "constraint ";
+            while (aux >> i)
             {
-                continue;
-            }
-            cout << "constraint c[" << j << "] = ";
-            j++;
-
-            if (i < 0)
-            {
-                cout << "not ";
-                i = i * -1;
-            }
-
-            cout << "v[" << i << "] ";
-
-            while (aux >> i and i != 0)
-            {
-                cout << "\\/ ";
                 if (i < 0)
                 {
-                    cout << "not ";
+                    lineaImp += "n_";
                     i = i * -1;
                 }
-
-                cout << "v[" << i << "] ";
+                if (i == 0)
+                {
+                    size_t len = lineaImp.length();
+                    cout << lineaImp.substr(0, len - 2) << ">=1;" << endl;
+                }
+                else
+                {
+                    lineaImp += "X" + to_string(i) + " ";
+                    lineaImp += "+ ";
+                }
             }
-            cout << ";" << endl;
         }
     }
 
     cout << "solve satisfy;" << endl;
+    for (int k = 1; k <= n; k++)
+    {
+        cout << "output[";
+        cout << "\"X" << k << "= \" , show(X" << k << "), \"; -X" << k << "=\" , show(n_X" << k << "), ";
+        cout << "];";
+        cout << " output[\" \\n \"];" << endl;
+    }
+
     return 0;
 }
